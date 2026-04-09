@@ -146,7 +146,7 @@ body {
 /* ------------------*/
 
 .hero-section {
-  padding: 7rem 0 4.3rem;
+  padding: 8rem 0 4.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -160,7 +160,7 @@ body {
 }
 
 .above-name {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   letter-spacing: 1px;
   font-family: var(--secondary-font);
   font-weight: 300;
