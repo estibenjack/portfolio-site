@@ -1,10 +1,8 @@
-@import 'tailwindcss';
-
-@theme {
-  --color-card: #1c1c1e;
-  --pixel-font: 'Pixelify Sans', sans-serif;
+:root {
+  /* --pixel-font: 'Pixelify Sans', sans-serif;  - no longer using */
   --primary-font: 'Archivo', sans-serif;
   --secondary-font: 'IBM Plex Mono', monospace;
+  --section-bg: #1c1c1e;
 }
 
 body {
@@ -78,7 +76,7 @@ body {
 
 .nav-username {
   font-size: 1rem;
-  color: #ffffff;
+  color: white;
   text-decoration: none;
 }
 
@@ -90,7 +88,7 @@ body {
 .nav-links a,
 .nav-mobile-dropdown a {
   font-size: 1rem;
-  color: #ffffff;
+  color: white;
   text-decoration: none;
   transition: color 0.2s ease;
   text-align: center;
@@ -220,6 +218,7 @@ body {
   padding: 0.6rem 0.4rem;
   background-color: #2d2d2d;
   border: 2px solid rgb(109, 109, 109);
+  color: rgb(223, 223, 223);
   margin: 0 auto;
   font-size: 0.925rem;
   border-radius: 6px;
@@ -272,7 +271,7 @@ body {
 }
 
 .project-card {
-  background: #111111;
+  background: var(--color-card);
   border: 1px solid #2a2a2a;
   border-radius: 12px;
   padding: 1.5rem;
