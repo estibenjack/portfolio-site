@@ -12,8 +12,16 @@ const ProjectCard = ({ project }) => {
       </div>
       {(project.github || project.link) && (
         <div className="project-links">
-          {project.github && <a href={project.github}>GitHub</a>}
-          {project.link && <a href={project.link}>Live Demo</a>}
+          {project.github && (
+            <a href={project.github} target="_blank">
+              GitHub
+            </a>
+          )}
+          {project.link && (
+            <a href={project.link} target="_blank">
+              Live Demo
+            </a>
+          )}
         </div>
       )}
     </div>
