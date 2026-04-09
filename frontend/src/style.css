@@ -5,6 +5,10 @@
   --section-bg: #1c1c1e;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: black;
   color: white;
