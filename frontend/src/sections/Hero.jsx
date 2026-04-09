@@ -7,10 +7,6 @@ import { useState } from 'react';
 const Hero = () => {
   const [isPixel, setIsPixel] = useState(true);
 
-  function handlePixelate() {
-    setIsPixel(!isPixel);
-  }
-
   return (
     <div className="hero-section">
       <div className="hero-text">
@@ -21,7 +17,7 @@ const Hero = () => {
       </div>
       <div className="hero-img-wrapper">
         <img src={isPixel ? pixelPic : irlPic} alt="Photo of Steven" />
-        <button onClick={handlePixelate}>
+        <button onClick={() => setIsPixel(!isPixel)}>
           {isPixel ? 'Unpixelate!' : 'Pixelate!'}
         </button>
       </div>
