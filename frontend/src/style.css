@@ -1,5 +1,5 @@
 :root {
-  /* --pixel-font: 'Pixelify Sans', sans-serif;  - no longer using */
+  --pixel-font: 'Pixelify Sans', sans-serif; /*- no longer using */
   --primary-font: 'Archivo', sans-serif;
   --secondary-font: 'IBM Plex Mono', monospace;
   --section-bg: #1c1c1e;
@@ -62,12 +62,49 @@ body {
 }
 
 /* ----------------*/
+/* --- BANNER -----*/
+/* ----------------*/
+
+.banner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background: #7c3aed;
+  overflow: hidden;
+  padding: 0.5rem 0;
+  white-space: nowrap;
+}
+
+.banner-track {
+  display: inline-block;
+  animation: scroll 20s linear infinite;
+}
+
+.banner-track span {
+  font-family: var(--secondary-font);
+  font-size: 0.85rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ----------------*/
 /* --- NAVBAR -----*/
 /* ----------------*/
 
 .navbar {
   position: fixed;
-  top: 0;
+  top: 2.23rem;
   left: 0;
   right: 0;
   z-index: 50;
@@ -146,7 +183,7 @@ body {
 /* ------------------*/
 
 .hero-section {
-  padding: 8rem 0 4.5rem;
+  padding: 13rem 2rem 5.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -156,7 +193,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding: 3rem 2rem;
+  justify-content: space-evenly;
+  height: 320px;
+  /* padding: 3rem 2rem; */
 }
 
 .above-name {
@@ -171,7 +210,7 @@ body {
   letter-spacing: 1px;
   font-family: var(--primary-font);
   font-weight: 700;
-  padding: 0.8rem 0;
+  /* padding: 0.8rem 0; */
 }
 
 .hero-job-title {
@@ -185,9 +224,6 @@ body {
 .contact-links {
   display: flex;
   gap: 2rem;
-}
-.hero-section .contact-links {
-  padding: 2.4rem 0;
 }
 
 .contact-links svg {
@@ -210,7 +246,7 @@ body {
   /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
-  padding: 2rem 1rem;
+  /* padding: 2rem 1rem; */
   overflow: hidden;
   gap: 10px;
   flex-shrink: 0;
@@ -236,6 +272,8 @@ body {
     opacity 0.2 ease,
     transform 0.2 ease;
   cursor: pointer;
+  font-family: var(--pixel-font);
+  text-transform: uppercase;
 }
 
 .hero-img-wrapper button:hover {
@@ -266,7 +304,7 @@ body {
 
 .section-text {
   background-color: rgb(20, 20, 20);
-  padding: 2rem 1.2rem;
+  padding: 2rem 2.4rem;
   border-radius: 10px;
   font-size: 1.15rem;
   color: rgb(191, 191, 191);
