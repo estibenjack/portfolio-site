@@ -470,6 +470,11 @@ footer {
   .hero-text {
     align-items: center;
     padding: 2rem 1rem;
+    height: 335px;
+  }
+
+  .hero-text .contact-links {
+    padding-top: 2rem;
   }
 
   .hero-img-wrapper {
