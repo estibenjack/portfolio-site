@@ -6,6 +6,7 @@ import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import Banner from './components/Banner';
+import SpotifyWidget from './components/SpotifyWidget';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       </main>
       <Footer />
       <BackToTop />
+      <SpotifyWidget />
     </>
   );
 }

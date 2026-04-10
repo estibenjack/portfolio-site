@@ -441,6 +441,79 @@ footer {
   transform: translateY(-3px);
 }
 
+/* ---------------------- */
+/* --- SPOTIFY WIDGET --- */
+/* ---------------------- */
+
+.spotify-widget {
+  position: fixed;
+  bottom: 4rem;
+  left: 2rem;
+  background: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 0.75rem 1rem;
+  width: 260px;
+  z-index: 90;
+  transition: transform 0.3s ease;
+}
+
+.spotify-widget:hover {
+  transform: scale(1.05);
+}
+
+.spotify-label {
+  font-family: var(--secondary-font);
+  font-size: 0.7rem;
+  color: #1db954;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.spotify-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.spotify-album-art {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.spotify-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  overflow: hidden;
+}
+
+.spotify-title {
+  font-family: var(--secondary-font);
+  font-size: 0.8rem;
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.spotify-title:hover {
+  color: #1db954;
+}
+
+.spotify-artist {
+  font-family: var(--secondary-font);
+  font-size: 0.75rem;
+  color: #aaaaaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* --------------------- */
 /* --- MEDIA QUERIES --- */
 /* --------------------- */
@@ -479,5 +552,32 @@ footer {
 
   .hero-img-wrapper {
     padding: 1rem;
+  }
+  .spotify-widget {
+    width: auto;
+    padding: 0.5rem;
+    bottom: 1rem;
+    left: 1rem;
+    border-radius: 12px;
+  }
+
+  .spotify-label {
+    font-size: 10px;
+  }
+
+  .spotify-title {
+    font-size: 0.6rem;
+  }
+
+  .spotify-artist {
+    font-size: 0.55rem;
+  }
+
+  .spotify-album-art {
+    /* width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    display: block; */
+    display: none;
   }
 }
