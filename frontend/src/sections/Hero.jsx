@@ -18,7 +18,7 @@ const Hero = () => {
       <div className="hero-img-wrapper">
         <img src={isPixel ? pixelPic : irlPic} alt="Photo of Steven" />
         <button onClick={() => setIsPixel(!isPixel)}>
-          {isPixel ? 'Unpixelate!' : 'Pixelate!'}
+          {isPixel ? 'Unpixelate me!' : 'Pixelate me!'}
         </button>
       </div>
     </div>
