@@ -557,6 +557,22 @@ footer {
   .hero-img-wrapper {
     padding: 1rem;
   }
+
+  /* sections */
+  .section {
+    padding: 2.1rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-text {
+    font-size: 1rem;
+  }
+
+  /* spotify widget */
+
   .spotify-widget {
     width: auto;
     padding: 0.5rem;
