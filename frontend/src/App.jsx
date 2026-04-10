@@ -5,10 +5,12 @@ import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import Banner from './components/Banner';
 
 function App() {
   return (
     <>
+      <Banner />
       <Navbar />
       <main className="main-wrapper">
         <Hero />
