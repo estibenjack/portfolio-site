@@ -537,6 +537,12 @@ footer {
 }
 
 @media (max-width: 698px) {
+  /* navbar */
+  .nav-mobile-dropdown {
+    top: 6rem;
+  }
+
+  /* hero section */
   .hero-section {
     flex-direction: column;
     align-items: center;
@@ -569,6 +575,14 @@ footer {
 
   .section-text {
     font-size: 1rem;
+    padding: 1rem 1.2rem;
+  }
+
+  /* project cards */
+
+  .project-card:hover {
+    border-color: #2a2a2a;
+    transform: translateY(0);
   }
 
   /* spotify widget */
@@ -576,8 +590,8 @@ footer {
   .spotify-widget {
     width: auto;
     padding: 0.5rem;
-    bottom: 1rem;
-    left: 1rem;
+    bottom: 3rem;
+    left: 1.4rem;
     border-radius: 12px;
   }
 
