@@ -6,7 +6,7 @@ export default function Footer() {
         <a href="#home" className="nav-brand" aria-label="Back to top">
           sj<span>.</span>
         </a>
-        <p>Built with React.</p>
+        <p>Built with React, good vibes and listening to some tunes.</p>
         <SpotifyWidget />
       </div>
       <div className="footer-bottom">
