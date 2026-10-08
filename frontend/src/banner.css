@@ -1,0 +1,45 @@
+html { scroll-padding-top: 146px; }
+.banner {
+  position: relative;
+  height: 34px;
+  overflow: hidden;
+  background: #2858a2;
+  color: #fff;
+  border-bottom: 1px solid var(--edge);
+  font: 10px/34px var(--mono);
+  letter-spacing: .9px;
+  text-transform: uppercase;
+}
+.banner-track {
+  display: flex;
+  width: max-content;
+  animation: banner-scroll 65s linear infinite;
+}
+.banner-group { display: flex; flex-shrink: 0; }
+.banner-group > span { display: flex; align-items: center; gap: 35px; padding-right: 35px; white-space: nowrap; }
+.banner-star { color: #dfb9d6; font-size: 16px; }
+.banner-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 34px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  background: #2858a2;
+  color: #fff;
+  border: 0;
+  border-left: 1px solid #ffffff50;
+  box-shadow: -10px 0 15px #2858a2;
+}
+.banner-toggle:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
+.banner-paused .banner-track { animation-play-state: paused; }
+.banner-static { display: none; text-align: center; }
+[data-theme='dark'] .banner, [data-theme='dark'] .banner-toggle { background: #243d65; }
+[data-theme='dark'] .banner-toggle { box-shadow: -10px 0 15px #243d65; }
+@keyframes banner-scroll { to { transform: translateX(-50%); } }
+@media (max-width: 720px) { html { scroll-padding-top: 120px; } }
+@media (prefers-reduced-motion: reduce) {
+  .banner-track, .banner-toggle { display: none; }
+  .banner-static { display: block; }
+}

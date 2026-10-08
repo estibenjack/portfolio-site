@@ -7,6 +7,7 @@ const links = [
   ['Contact', '#contact']
 ];
 import ThemeToggle from './ThemeToggle';
+import Banner from './Banner';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +21,7 @@ export default function Navbar() {
   }, [isOpen]);
   return (
     <header className="site-header">
+      <Banner />
       <nav className="navbar" aria-label="Main navigation">
         <a href="#home" className="nav-brand" aria-label="Steven Jackson home">
           sj<span>.</span>
