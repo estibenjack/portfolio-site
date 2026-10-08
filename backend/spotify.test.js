@@ -142,6 +142,26 @@ test('track cache expiry does not unnecessarily refresh an unexpired access toke
   assert.equal(calls.length, 3);
 });
 
+test('paused playback updates to playing once the short cache expires', async () => {
+  let clock = 100000;
+  const { client, calls } = clientWith(
+    [token,
+      () => Response.json({ item: track, is_playing: false }),
+      () => Response.json({ item: track, is_playing: true }),
+      () => Response.json({ item: track, is_playing: false })],
+    { now: () => clock }
+  );
+  assert.equal((await client.getNowPlaying()).isPlaying, false);
+  clock += 4999;
+  assert.equal((await client.getNowPlaying()).isPlaying, false);
+  assert.equal(calls.length, 2);
+  clock += 1;
+  assert.equal((await client.getNowPlaying()).isPlaying, true);
+  clock += 5000;
+  assert.equal((await client.getNowPlaying()).isPlaying, false);
+  assert.equal(calls.length, 4);
+});
+
 test('HTTP endpoint returns generic errors without exposing credentials', async () => {
   const server = createApp({
     spotify: {

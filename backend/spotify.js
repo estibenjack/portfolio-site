@@ -130,7 +130,8 @@ function createSpotifyClient({
         track = normaliseTrack(recent?.items?.[0]?.track);
       }
       cachedTrack = track || { isPlaying: false };
-      cacheExpiresAt = now() + 30000;
+      // Keep request sharing without holding a paused state for too long.
+      cacheExpiresAt = now() + 5000;
       return cachedTrack;
     })();
     try {

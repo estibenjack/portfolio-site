@@ -16,7 +16,10 @@ export default function SpotifyWidget() {
       controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 12000);
       try {
-        const response = await fetch(endpoint, { signal: controller.signal });
+        const response = await fetch(endpoint, {
+          signal: controller.signal,
+          cache: 'no-store'
+        });
         if (!response.ok) throw new Error('Spotify is unavailable');
         const data = response.status === 204 ? null : await response.json();
         if (data?.error) throw new Error('Spotify is unavailable');
@@ -35,7 +38,7 @@ export default function SpotifyWidget() {
         }
       } finally {
         clearTimeout(timeout);
-        if (!disposed) timer = setTimeout(fetchTrack, 60000);
+        if (!disposed) timer = setTimeout(fetchTrack, 15000);
       }
     };
     fetchTrack();
