@@ -1,0 +1,156 @@
+/* Reversible style experiment. Remove its import in main.jsx to restore the
+   original design. Content and the base stylesheet are unchanged. */
+:root {
+  --line: #d3c8df;
+  --edge: #433650;
+  --blue-shadow: #b5c7ed;
+  --plum-shadow: #d5b9d1;
+}
+
+.site-header { border-bottom: 2px solid var(--edge); }
+.nav-brand { font-weight: 850; }
+.nav-links, .nav-connect, .text-link, .button {
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.nav-links a:hover { text-decoration: underline; text-underline-offset: 6px; }
+.nav-connect {
+  border: 1.5px solid var(--edge);
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 var(--plum-shadow);
+}
+.hero-section { position: relative; isolation: isolate; }
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 24px -20px 60px;
+  z-index: -1;
+  background-image: radial-gradient(#80526924 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to right, transparent, #000 80%);
+  pointer-events: none;
+}
+.hero-text > .eyebrow {
+  display: inline-flex;
+  padding: 7px 11px;
+  border: 1px solid #c6b4d4;
+  border-radius: 2px;
+  background: #eee3f1;
+  letter-spacing: .7px;
+}
+.hero-text h1 {
+  font-weight: 800;
+  font-size: clamp(46px, 4.8vw, 65px);
+  letter-spacing: -3.5px;
+  line-height: 1.12;
+}
+.hero-emphasis {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--plum-shadow);
+  text-decoration-thickness: 7px;
+  text-underline-offset: 8px;
+}
+.hero-description { margin-top: 32px; }
+.button-dark {
+  background: var(--accent);
+  border: 1.5px solid var(--edge);
+  border-radius: 2px;
+  box-shadow: 4px 4px 0 var(--plum-shadow);
+}
+.button-dark:hover {
+  background: #214a89;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--plum-shadow);
+}
+.portrait-card {
+  border: 2px solid var(--edge);
+  border-radius: 3px;
+  background: #eee3f1;
+  box-shadow: 8px 8px 0 var(--blue-shadow);
+}
+.portrait-image { border-radius: 1px; }
+.portrait-caption strong { font-family: var(--mono); font-weight: 600; }
+.cert-note { margin-top: 24px; }
+.hero-bottom { border-bottom: 2px solid var(--edge); }
+h2 { font-weight: 750; letter-spacing: -1.3px; }
+.section-heading h2::before,
+.section-heading-row h2::before {
+  content: '//';
+  display: inline-block;
+  color: var(--plum);
+  font-family: var(--mono);
+  font-size: .65em;
+  font-weight: 500;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+.skill-card {
+  border: 1.5px solid var(--edge);
+  border-radius: 3px;
+  background: #edf1fb;
+  box-shadow: 4px 4px 0 var(--blue-shadow);
+}
+.skill-card:nth-child(2) {
+  background: #f1e9f4;
+  box-shadow: 4px 4px 0 var(--plum-shadow);
+}
+.skill-card h3 { font-weight: 650; }
+.tech-badge { border-color: #c5bdd4; border-radius: 2px; font-size: 10px; }
+.certification, .experience-card {
+  border: 1.5px solid #aa9dbb;
+  border-radius: 3px;
+}
+.project-filters button { border-radius: 2px; font-family: var(--mono); }
+.project-filters button.active {
+  background: var(--accent);
+  border-color: var(--edge);
+  box-shadow: 3px 3px 0 var(--plum-shadow);
+}
+.project-card {
+  border: 1.5px solid var(--edge);
+  border-radius: 3px;
+  box-shadow: 4px 4px 0 #ded6e8;
+  transition: transform .2s, box-shadow .2s;
+}
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 4px 7px 0 var(--plum-shadow);
+}
+.project-details h3 { font-weight: 650; }
+.project-visual { border-bottom: 1px solid #bfb3cf; }
+.project-featured .project-visual {
+  border-bottom: 0;
+  border-right: 1px solid #bfb3cf;
+}
+.contact-section {
+  border: 2px solid var(--edge);
+  border-radius: 3px;
+  box-shadow: 7px 7px 0 var(--blue-shadow);
+}
+.contact-layout h2 { font-weight: 800; }
+.contact-layout h2 span { font-family: inherit; font-style: normal; font-weight: inherit; }
+.contact-button {
+  border: 2px solid var(--edge);
+  background: var(--paper);
+  box-shadow: 3px 3px 0 var(--plum-shadow);
+}
+.back-to-top { border: 1.5px solid var(--edge); border-radius: 3px; box-shadow: 2px 2px 0 var(--plum-shadow); }
+
+@media (max-width: 1000px) {
+  .hero-text h1 { font-size: 48px; letter-spacing: -2.8px; }
+}
+@media (max-width: 720px) {
+  .hero-text h1 { font-size: clamp(36px, 8vw, 56px); letter-spacing: -2px; }
+  .hero-emphasis { text-decoration-thickness: 5px; text-underline-offset: 5px; }
+  .hero-section::before { inset: 20px 0 60px; }
+  .hero-text > .eyebrow { font-size: 8px; }
+  .portrait-card { box-shadow: 5px 5px 0 var(--blue-shadow); }
+  .project-featured .project-visual { border-right: 0; border-bottom: 1px solid #bfb3cf; }
+  .contact-section { box-shadow: 4px 4px 0 var(--blue-shadow); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-card { transition: none; }
+}

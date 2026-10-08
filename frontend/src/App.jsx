@@ -1,29 +1,30 @@
-import Navbar from './components/Navbar';
+﻿import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
+import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
-import Banner from './components/Banner';
-import SpotifyWidget from './components/SpotifyWidget';
+import useEntranceAnimations from './components/useEntranceAnimations';
 
-function App() {
+export default function App() {
+  useEntranceAnimations();
   return (
     <>
-      <Banner />
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Navbar />
-      <main className="main-wrapper">
+      <main className="main-wrapper" id="main">
         <Hero />
         <About />
+        <Skills />
         <Projects />
         <Contact />
       </main>
       <Footer />
       <BackToTop />
-      <SpotifyWidget />
     </>
   );
 }
-
-export default App;

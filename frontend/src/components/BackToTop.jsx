@@ -15,6 +15,7 @@ const BackToTop = () => {
   return visible ? (
     <button
       className="back-to-top"
+      aria-label="Back to top"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
       <ArrowUp size={20} />

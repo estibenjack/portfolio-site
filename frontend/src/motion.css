@@ -1,0 +1,46 @@
+@media (prefers-reduced-motion: no-preference) {
+  .skill-card,
+  .certification,
+  .nav-connect,
+  .theme-toggle {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
+  }
+  .contact-button svg,
+  .project-links a svg:last-of-type,
+  .text-link svg {
+    transition: transform 0.2s ease;
+  }
+  .back-to-top {
+    animation: button-appear 0.25s ease-out;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .skill-card:hover {
+    transform: translateY(-3px);
+  }
+  .certification:hover,
+  .nav-connect:hover,
+  .theme-toggle:hover {
+    transform: translateY(-2px);
+  }
+  .contact-button:hover svg,
+  .project-links a:hover svg:last-of-type,
+  .text-link:hover svg {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes button-appear {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+}

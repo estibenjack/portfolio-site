@@ -1,57 +1,87 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
+import { Music2 } from 'lucide-react';
 
-const SpotifyWidget = () => {
+const endpoint = import.meta.env.VITE_SPOTIFY_ENDPOINT || '/api/now-playing';
+
+export default function SpotifyWidget() {
   const [track, setTrack] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState('loading');
 
   useEffect(() => {
+    let disposed = false;
+    let timer;
+    let controller;
     const fetchTrack = async () => {
+      if (disposed) return;
+      controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 12000);
       try {
-        const response = await fetch(
-          'https://portfolio-site-backend-m6yo.onrender.com/api/now-playing'
-        );
-        const data = await response.json();
-        setTrack(data);
-      } catch (err) {
-        console.error(`Error fetching Spotify data: ${err}`);
+        const response = await fetch(endpoint, { signal: controller.signal });
+        if (!response.ok) throw new Error('Spotify is unavailable');
+        const data = response.status === 204 ? null : await response.json();
+        if (data?.error) throw new Error('Spotify is unavailable');
+        if (!disposed) {
+          const validTrack =
+            data?.title &&
+            data?.artist &&
+            /^https:\/\/open\.spotify\.com\//.test(data?.songUrl || '');
+          setTrack(validTrack ? data : null);
+          setStatus(validTrack ? 'ready' : 'empty');
+        }
+      } catch {
+        if (!disposed) {
+          setTrack(null);
+          setStatus('unavailable');
+        }
       } finally {
-        setLoading(false);
+        clearTimeout(timeout);
+        if (!disposed) timer = setTimeout(fetchTrack, 60000);
       }
     };
-
     fetchTrack();
-    const interval = setInterval(fetchTrack, 30000);
-    return () => clearInterval(interval);
+    return () => {
+      disposed = true;
+      clearTimeout(timer);
+      controller?.abort();
+    };
   }, []);
-
-  if (loading) return null;
-  if (!track) return null;
 
   return (
     <div className="spotify-widget">
-      <p className="spotify-label">
-        {track.isPlaying ? '▶ Now listening to:' : '⏸ Last listened to:'}
-      </p>
-      <div className="spotify-content">
-        <img
-          src={track.albumArt}
-          alt={track.album}
-          className="spotify-album-art"
-        />
-        <div className="spotify-info">
-          <a
-            href={track.songUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="spotify-title"
-          >
-            {track.title}
-          </a>
-          <p className="spotify-artist">{track.artist}</p>
-        </div>
-      </div>
+      <Music2 size={17} className="spotify-icon" aria-hidden="true" />
+      {track ? (
+        <>
+          {track.albumArt && (
+            <img
+              src={track.albumArt}
+              alt={track.album || 'Album artwork'}
+              className="spotify-album-art"
+            />
+          )}
+          <div className="spotify-info">
+            <p className="spotify-label">
+              {track.isPlaying ? 'ON REPEAT · NOW PLAYING' : 'LAST LISTENED TO'}
+            </p>
+            <a
+              href={track.songUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="spotify-title"
+            >
+              {track.title}
+            </a>
+            <p className="spotify-artist">{track.artist}</p>
+          </div>
+        </>
+      ) : (
+        <span className="spotify-empty">
+          {status === 'loading'
+            ? 'Checking the soundtrack…'
+            : status === 'empty'
+              ? 'Nothing on the turntable right now.'
+              : 'The soundtrack is taking a break.'}
+        </span>
+      )}
     </div>
   );
-};
-
-export default SpotifyWidget;
+}

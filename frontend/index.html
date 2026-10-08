@@ -2,9 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/SJ_logo.png" />
+    <script>
+      // Apply the saved/system theme before the page paints.
+      (() => {
+        let savedTheme;
+        try { savedTheme = localStorage.getItem('portfolio-theme'); } catch {}
+        document.documentElement.dataset.theme = ['light', 'dark'].includes(savedTheme)
+          ? savedTheme
+          : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Steven Jackson | Software Engineer</title>
+    <title>Steven Jackson | AI & Data Consultant</title>
+    <meta name="description" content="Steven Jackson, AI & Data Consultant at EY. Projects in generative AI, Azure data engineering, and software development. Databricks certified." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
